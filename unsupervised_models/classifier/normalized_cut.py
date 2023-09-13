@@ -16,7 +16,7 @@ class NormalizedCutFactory(BaseModelFactory):
         self._y: ndarray = y
 
         # initialize the possible candidates (number of clusters)
-        self.nClusters: list[int] = [x for x in range(1, 16)]
+        self.nClusters: list[int] = [x for x in range(5, 16)]
 
         # generate k normalized cut models each of which with a different number of clusters
         self.meanShiftModel: list[SpectralClustering] = [

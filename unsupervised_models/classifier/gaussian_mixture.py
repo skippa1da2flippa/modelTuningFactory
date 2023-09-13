@@ -17,7 +17,7 @@ class GaussianMixturesFactory(BaseModelFactory):
         self._y: ndarray = y
 
         # initialize the possible candidates (number of clusters)
-        self.nClusters: list[int] = [x for x in range(1, 16)]
+        self.nClusters: list[int] = [x for x in range(5, 16)]
 
         # generate k gaussian mixtures each of which with a different number of clusters
         self.gaussianMixtures: list[BaseMixture] = [

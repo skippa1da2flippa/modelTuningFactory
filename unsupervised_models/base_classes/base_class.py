@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from numpy import ndarray, array
 from sklearn.base import BaseEstimator
-from base_factory import BaseFactory
+from unsupervised_models.base_classes.base_factory import BaseFactory
 from sklearn.metrics import adjusted_rand_score
 from unsupervised_models.PCA_reduction.PCA import PcaFeatsWrapper
 
@@ -74,3 +74,5 @@ class BaseModelFactory(BaseFactory):
     def updateDataSet(self, X_new: pd.DataFrame, y_new: ndarray):
         self._X = X_new
         self._y = y_new
+
+
