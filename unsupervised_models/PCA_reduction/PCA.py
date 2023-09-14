@@ -19,18 +19,20 @@ def graphGenerator(pca: PCA):
 class PcaFeatsWrapper:
 
     # initialize the object with the right bound (interval of dimensions)
-    def __init__(self, lowerBound: int = 2, upperBound: int = 200):
+    def __init__(self, lowerBound: int = 2, upperBound: int = 200, stepSize: int = 4):
         if upperBound > lowerBound > 0:
             self.lowerBound: int = lowerBound
             self.upperBound: int = upperBound
         else:
             self.lowerBound, self.upperBound = 2, 200
 
+        self._stepSize: int = stepSize
+
     # generate a collection of dataset each of which is reduced to a d-dimensional space
     def pcaIterable(self, dataSet: pd.DataFrame) -> list[pd.DataFrame]:
         pcasContainer: list[pd.DataFrame] = []
 
-        for component in range(self.lowerBound, self.upperBound + 1):
+        for component in range(self.lowerBound, self.upperBound + 1, self._stepSize):
             # initialize PCA
             tempPca: PCA = PCA(n_components=component)
 
