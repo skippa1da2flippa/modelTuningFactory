@@ -25,13 +25,7 @@ class NormalizedCutFactory(BaseModelFactory):
             ) for nCluster in self.nClusters
         ]
 
-        # define what sequence of actions the extended class should do
-        def _fitNdTesting(normalizedCutModel: SpectralClustering, X_t: pd.DataFrame):
-            # train the model and return how the model doing with the training data
-            return normalizedCutModel.fit_predict(X_t)
-
         # set up the base class
         super().__init__(
-            self.meanShiftModel, self.nClusters, _fitNdTesting, self._X, self._y
+            self.meanShiftModel, self.nClusters, self._X, self._y
         )
-

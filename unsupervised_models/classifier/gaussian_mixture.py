@@ -26,23 +26,12 @@ class GaussianMixturesFactory(BaseModelFactory):
             ) for n_classes in self.nClusters
         ]
 
-        # define what sequence of actions the extended class should do
-        def _fitNdTesting(gaussianMixture: BaseMixture, X_t: pd.DataFrame):
-            # train the model
-            gaussianMixture.fit(X_t)
-
-            # return how the model doing with the training data
-            return gaussianMixture.predict(X_t)
-
         # set up the base class
         super().__init__(
-            self.gaussianMixtures, self.nClusters, _fitNdTesting, self._X, self._y
+            self.gaussianMixtures, self.nClusters, self._X, self._y
         )
 
-    def tuningProcess(self, dataset: pd.DataFrame, returnBestModel: bool = False) -> tuple:
-        return super().tuningProcess(dataset, returnBestModel)
-
-    def updateDataSet(self, X_new: pd.DataFrame, y_new: ndarray):
+    def updateDataSet(self, X_new: pd.DataFrame, y_new: ndarray) -> None:
         self._X = X_new
         self._y = y_new
         super().updateDataSet(X_new, y_new)

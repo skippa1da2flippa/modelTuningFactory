@@ -19,7 +19,7 @@ def graphGenerator(pca: PCA):
 class PcaFeatsWrapper:
 
     # initialize the object with the right bound (interval of dimensions)
-    def __init__(self, lowerBound: int = 2, upperBound: int = 200, stepSize: int = 4):
+    def __init__(self, lowerBound: int = 2, upperBound: int = 200, stepSize: int = 20):
         if upperBound > lowerBound > 0:
             self.lowerBound: int = lowerBound
             self.upperBound: int = upperBound
